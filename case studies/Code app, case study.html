@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Patient-centric dashboard, Theoria Medical, case study by Marjie Corona</title><meta name="description" content="Redesigning a physician dashboard from schedule-based to task-based, with patient data inside encounter notes.">
+<title>#Code app, case study by Marjie Corona</title><meta name="description" content="A mobile study app with bite-size C# lessons, built from user research to a working Android UI.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
---bg:#E9ECEA;--panel:#FFFFFF;--soft:#F1F4F2;--ink:#101820;--muted:#3D4650;--line:#C9CFCC;--accent:#0B4F6C;--tint:#B9D7F2;--app:#0B4F6C;--pill:#101820;--pill-ink:#FFFFFF;
+--bg:#E9ECEA;--panel:#FFFFFF;--soft:#F1F4F2;--ink:#101820;--muted:#3D4650;--line:#C9CFCC;--accent:#285C00;--tint:#D3EC9E;--app:#285C00;--pill:#101820;--pill-ink:#FFFFFF;
 --display:"Bricolage Grotesque","Avenir Next","Segoe UI",sans-serif;--body:"Instrument Sans","Avenir Next","Segoe UI",sans-serif}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0C1114;--panel:#151C20;--soft:#1D262B;--ink:#F2F4F3;--muted:#C3CBCF;--line:#3A464C;--accent:#8CCBE6;--pill:#F2F4F3;--pill-ink:#101820}}
-:root[data-theme="dark"]{color-scheme:dark;--bg:#0C1114;--panel:#151C20;--soft:#1D262B;--ink:#F2F4F3;--muted:#C3CBCF;--line:#3A464C;--accent:#8CCBE6;--pill:#F2F4F3;--pill-ink:#101820}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0C1114;--panel:#151C20;--soft:#1D262B;--ink:#F2F4F3;--muted:#C3CBCF;--line:#3A464C;--accent:#A5E65C;--pill:#F2F4F3;--pill-ink:#101820}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0C1114;--panel:#151C20;--soft:#1D262B;--ink:#F2F4F3;--muted:#C3CBCF;--line:#3A464C;--accent:#A5E65C;--pill:#F2F4F3;--pill-ink:#101820}
 html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 4.5rem);scroll-behavior:smooth}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
@@ -126,66 +126,68 @@ table{border-collapse:collapse;width:100%;font-size:1rem}th,td{text-align:left;p
 .bar2{height:10px;background:#58CC02;margin:-1.4rem -1rem .8rem}.days{display:flex;gap:.25rem;justify-content:center;margin:.4rem 0 .8rem}.days span{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;border:1.5px solid #285C00;font-size:.65rem}.days .on{background:#58CC02;border-color:#58CC02}
 .crd{background:#E0EAE0;border-radius:8px;padding:.6rem;margin-bottom:.5rem}.pg{height:8px;border-radius:4px;background:#D5DADD;margin:.2rem 0 .8rem}.pg span{display:block;height:100%;border-radius:4px;background:#58CC02}
 .opt[aria-pressed="true"]{background:#E0EAE0;border-width:3px}.qt{border:1.5px solid #58CC02;border-radius:8px;padding:.6rem}
-</style></head>
-
+</style>
+</head>
 <body>
 <a class="skip" href="#overview">Skip to case study</a>
-<div class="shell"><header class="bar"><a href="index.html">Marjie Corona</a><nav aria-label="Case study sections"><a href="#overview">Overview</a><a href="#discovery">Discovery</a><a href="#flows">Flows</a><a href="#validation">Validation</a><a href="#impact">Impact</a></nav></header>
+<div class="shell"><header class="bar"><a href="/index.html">Marjie Corona</a><nav aria-label="Case study sections"><a href="#overview">Overview</a><a href="#discovery">Discovery</a><a href="#flows">Flows</a><a href="#validation">Validation</a><a href="#impact">Impact</a></nav></header>
+
 <main><section id="overview" class="hero" aria-labelledby="t"><div>
-<p class="muted">Web app dashboard redesign, Theoria Medical, 2022 to 2024</p>
-<h1 id="t">From a schedule to a patient-centric dashboard</h1>
+<p class="muted">Android app, mobile development course project</p>
+<h1 id="t">#Code app</h1>
 <dl class="brief">
-<div><dt>The problem</dt><dd>The physician dashboard showed a schedule, not the tasks that needed attention, and physicians had to leave encounter notes to review documents.</dd></div>
-<div><dt>The outcome</dt><dd>A task-based dashboard in three groups, with filtered action pages, and flagged vitals and medications to reduce brought into the encounter note.</dd></div>
-<div><dt>My role</dt><dd>I joined at brainstorming, researched the pain points, contributed dashboard layout ideas and integrated the workflows into encounter notes.</dd></div></dl></div>
-<div class="stage" role="img" aria-label="Redesigned physician dashboard with medical documents, diagnostic results, flagged vitals, patient visits and open encounters widgets">
-<div class="dash" aria-hidden="true"><aside></aside><div class="dc">
-<div><div class="w"><b>Medical documents</b><p><span>To do</span><span>4</span></p><p><span>Pending</span><span>0</span></p><p><span>Done</span><span>0</span></p></div><div class="w"><p><span>Diagnostic results</span><span>14</span></p></div><div class="w"><p><span>Flagged vitals</span><span>22</span></p></div><div class="w"><p><span>Meds reduction</span><span>2</span></p></div></div>
-<div><div class="w"><b>Patient visits</b><p><span>Scheduled</span><span>8</span></p><p><span>Seen</span><span>2</span></p><p><span>Done</span><span>0</span></p></div><div class="w"><b>Quality assurance</b><p><span>Meetings</span><span>1</span></p><p><span>Encounter reviews</span><span>7</span></p></div></div>
-<div><div class="w"><b>Open encounters</b><p><span>Up to 48 hours</span><span>0</span></p><p><span>Up to 72 hours</span><span>0</span></p><p><span>Over 72 hours</span><span>0</span></p><p><span>Auditing</span><span>1</span></p><p><span>Signed today</span><span>1</span></p></div></div>
-</div></div></div></section>
-<section id="discovery" aria-labelledby="d"><h2 id="d">Physicians kept leaving the note to find what they needed</h2>
-<p class="lede">Theoria Medical offers on-site medical staff and telemedicine. Its physicians use proprietary apps, including a specialized EHR. Care plans depend on labs, medications and medical reports, so that information has to be at hand.</p>
+<div><dt>The problem</dt><dd>Learning a programming language can feel daunting and exhausting, and the three students I interviewed reported procrastination, distress and low motivation.</dd></div>
+<div><dt>The outcome</dt><dd>A study app with bite-size C# lessons, motivating copy, study streaks, downloadable modules and a completion certificate, approved by our professor as client.</dd></div>
+<div><dt>My role</dt><dd>I ran the user research, shared the flowcharts, designed the wireframes with one UI designer, prototyped, and built the UI.</dd></div></dl></div>
+<div class="stage" role="img" aria-label="Home screen with study streak and continue card">
+<div class="ph" aria-hidden="true"><div class="bar2"></div><h4 style="text-align:center;color:#285C00">Your study streak</h4>
+<div class="days"><span class="on">S</span><span class="on">M</span><span class="on">T</span><span class="on">W</span><span>Th</span><span>F</span><span>S</span></div>
+<p style="margin:.6rem 0 .3rem">Continue</p><div class="crd"><b>Variables and Data Types</b><br>10% completed</div>
+<div class="nb"><span>Home</span><span>Downloads</span><span>Profile</span></div></div></div></section>
+<section id="discovery" aria-labelledby="d"><h2 id="d">Hard to stay motivated while learning to code</h2>
+<p class="lede">The app is for anyone learning a programming language, with a focus on computer science and IT students. Our class asked for any Android app, and we chose a topic we knew, which made interviewing users easy.</p>
 <div class="cols">
-<div class="panel"><h3>How I researched</h3><ul><li>Gathered information through team channels</li><li>Watched for emerging themes</li><li>Retraced a physician’s steps in the app to find pain points</li></ul></div>
-<div class="panel persona"><h3>Who it’s for</h3><p>Physicians who see patients at facilities and must assess, document and sign each encounter.</p></div>
-<div class="panel"><h3>The challenge</h3><p>Improve completion of tasks and progress tracking for documents and workflow tasks.</p></div></div>
-<h3 style="margin-top:2.5rem">Pain points found</h3>
-<ul class="pains"><li>The dashboard focused on the physician’s schedule, not facility or organization tasks.</li><li>Navigating and filtering documents on the medical documents page took multiple steps.</li><li>During visits, physicians left the encounter notes to check documents or reports.</li></ul></section>
+<div class="panel"><h3>How I researched</h3><ul><li>Interviewed 3 students about learning to program</li><li>Presented findings to the team before brainstorming</li><li>Used findings to prioritize features</li></ul></div>
+<div class="panel persona"><h3>Who it’s for</h3><p>Beginners learning C#, especially computer science and IT students who want to feel progress and stay engaged.</p></div>
+<div class="panel"><h3>The team</h3><ul><li>Reanne, project manager and QA</li><li>Fordy, UI designer and navigation planner</li><li>Rov, content strategist</li><li>Dennis and Kenneth, back-end</li></ul></div></div>
+<h3 style="margin-top:2.5rem">What I found</h3>
+<ul class="pains"><li>Technical detail made learning daunting and exhausting.</li><li>Students procrastinated and felt distressed and demotivated.</li><li>Students prefer a mix of text, video and visuals to grasp concepts.</li></ul></section>
 
-<section id="flows" aria-labelledby="f"><h2 id="f">Mapping where the visit workflow breaks</h2>
-<p class="lede">Dashed boxes show the existing journey. The loops back to “find” steps are where time is lost.</p>
-<ol class="flow"><li><b>Old dashboard</b><span>Check schedule and reason for visit</span></li><li><b>Patient chart</b><span>Review records, conditions, nursing and encounter notes</span></li><li><b>Medical documents</b><span>Labs, imaging and more</span></li><li><b>Encounters page</b><span>Create visit note</span></li><li><b>Fill out note</b><span>Find the encounter note and documents again</span></li><li><b>Sign and submit</b><span>Close the encounter</span></li></ol>
-<p class="muted" style="margin-top:1rem">Two loops stand out: finding the encounter note, and going back to find a medical document mid-visit.</p>
-<h3 style="margin-top:2.5rem">Proposed flow</h3>
-<ol class="flow"><li class="alt"><b>Dashboard widget</b><span>Tasks grouped by importance</span></li><li class="alt"><b>Filtered action page</b><span>Everything needing attention</span></li><li class="alt"><b>Encounter note</b><span>Flagged vitals and meds to reduce inside the note</span></li><li><b>Sign and submit</b><span>No trip back to documents</span></li></ol>
-<div class="tree"><div class="panel"><h3>How tasks are grouped</h3><p>Tasks fell into three groups, ordered from most to least important: medical documents or reports to be reviewed, schedule-related tasks and progress, and encounter note progress.</p></div></div></section>
+<section id="flows" class="flows" aria-labelledby="f"><h2 id="f">Four user goals, no dead ends</h2>
+<p class="lede">I shared flowcharts as the team’s common language. Designers used them to check every path leads somewhere.</p>
+<h3>Create an account</h3><ol class="flow"><li><b>Start</b><span>Choose to create an account</span></li><li><b>Registration form</b><span>Fill it out</span></li><li><b>Walkthrough</b><span>Take it, or skip</span></li><li><b>Dashboard</b><span>Land on the home screen</span></li></ol>
+<h3>Get the course certificate</h3><ol class="flow"><li><b>Dashboard</b><span>Check available modules</span></li><li><b>Open module</b><span>Read the lesson</span></li><li><b>Answer quiz</b><span>Pass to continue</span></li><li class="alt"><b>Certificate</b><span>Earned after the final module</span></li></ol>
+<h3>Check learning progress</h3><ol class="flow"><li><b>Dashboard</b><span>Start at home</span></li><li><b>Course progress</b><span>See where you are</span></li></ol>
+<h3>Download and finish material</h3><ol class="flow"><li><b>Dashboard</b><span>Check available modules</span></li><li><b>Download module</b><span>Save for later</span></li><li><b>Open and read</b><span>Work through it</span></li><li><b>Answer quiz</b><span>Pass to save progress</span></li></ol>
+<h3 style="margin-top:2.5rem">Prioritization matrix</h3>
+<p class="muted">Features plotted by user value against team effort. Faded features were deprioritized, and the matrix guided who built what.</p>
+<div class="mx"><div class="panel"><h3>High value, low effort</h3><ul><li>Picture references</li><li>Lessons</li><li>Videos</li><li>Quizzes every module</li><li>Certificates</li><li>Illustrations</li><li>Study streak</li></ul></div>
+<div class="panel"><h3>High value, high effort</h3><ul><li>Progress bars</li><li>Downloadable lessons</li><li>Compiler</li><li>Dark mode</li></ul></div>
+<div class="panel"><h3>Low value, low effort</h3><ul><li>Leaderboards</li><li>Social media share</li></ul></div>
+<div class="panel"><h3>Low value, high effort</h3><ul><li>App notifications</li></ul></div></div></section>
 
-<section id="validation" aria-labelledby="v"><h2 id="v">Three layouts, one that could scale</h2>
-<p class="lede">We presented three wireframes as final options. Switch between them to compare.</p>
-<div class="seg" role="group" aria-label="Wireframe options"><button type="button" aria-pressed="true" data-v="a">Option 1</button><button type="button" aria-pressed="false" data-v="b">Option 2</button><button type="button" aria-pressed="false" data-v="c">Option 3</button></div>
-<div class="cmp"><div class="stage" style="padding-bottom:1.5rem">
-<div class="wfm" data-panel="a" style="grid-template-columns:repeat(4,1fr)" role="img" aria-label="Wireframe option 1"><i></i><i></i><i></i><i></i><i style="grid-column:span 2;height:64px"></i><i style="grid-column:span 2;height:64px"></i><i style="grid-column:span 2;height:50px"></i><i style="grid-column:span 2;height:50px"></i></div>
-<div class="wfm" data-panel="b" hidden style="grid-template-columns:repeat(3,1fr)" role="img" aria-label="Wireframe option 2"><i style="height:90px"></i><i style="height:90px;border-radius:50px"></i><i style="height:90px"></i><i style="grid-column:span 3;height:46px"></i></div>
-<div class="wfm" data-panel="c" hidden style="grid-template-columns:repeat(3,1fr)" role="img" aria-label="Wireframe option 3"><i></i><i></i><i style="grid-column:3;grid-row:span 2;height:76px"></i><i></i><i></i><i style="grid-column:span 3;height:50px"></i></div></div>
-<ul class="why">
-<li data-panel="a"><b>Option 1: summary tiles first.</b><br>Tiles for admitted today, discharges, missed visits and meds reduction sit above lists of open encounters, visits and documents.</li>
-<li data-panel="b" hidden><b>Option 2: task widgets beside the schedule. Chosen.</b><br>Medical documents, diagnostic results, flagged vitals and meds reduction sit with patient schedules and encounters. We pushed for this one because it scales better, and built it around visits and encounters as proof of work.</li>
-<li data-panel="c" hidden><b>Option 3: alerts above a clinical workflow area.</b><br>Clinical results and flags lead, followed by a large workflow space and open encounters grouped by time.</li></ul></div></section>
+<section id="validation" aria-labelledby="v"><h2 id="v">Three looks, tested with the team</h2>
+<p class="lede">The team suggested colors and typography, and I made three high-fidelity versions of the same screens so everyone could feel each one. Switch between them.</p>
+<div class="seg" role="group" aria-label="Style options"><button type="button" aria-pressed="false" data-v="a">Grab green</button><button type="button" aria-pressed="true" data-v="b">Lawn Green</button><button type="button" aria-pressed="false" data-v="c">Sololearn blue</button></div>
+<div class="cmp"><div class="stage">
+<div class="ph" data-panel="a" hidden aria-label="Grab green option"><div class="bar2" style="background:#00B14F"></div><h4 style="text-align:center;color:#006B30">Your study streak</h4><div class="crd" style="background:#DCEFE3"><b>Variables and Data Types</b><br>10% completed</div><span class="btn" style="display:grid;place-items:center;background:#00B14F;border-color:#00B14F">Next</span></div>
+<div class="ph" data-panel="b" aria-label="Lawn Green option"><div class="bar2"></div><h4 style="text-align:center;color:#285C00">Your study streak</h4><div class="crd"><b>Variables and Data Types</b><br>10% completed</div><span class="btn" style="display:grid;place-items:center;background:#58CC02;border-color:#58CC02">Next</span></div>
+<div class="ph" data-panel="c" hidden aria-label="Sololearn blue option"><div class="bar2" style="background:#2FA4F5"></div><h4 style="text-align:center;color:#0B5A94">Your study streak</h4><div class="crd" style="background:#D6EBFA"><b>Variables and Data Types</b><br>10% completed</div><span class="btn" style="display:grid;place-items:center;background:#2FA4F5;border-color:#2FA4F5">Next</span></div></div>
+<div><ul class="why"><li><b>Decision: Lawn Green with Poppins, in a light theme.</b><br>A light green inspired by Duolingo, which suits a friendly, encouraging learning app.</li>
+<li><b>Two prototype iterations before I built the UI.</b><br>The prototype was presented to and approved by our professor, who acted as client.</li></ul>
+<div class="sw" role="img" aria-label="Lawn Green swatch, hex 58CC02"><span style="background:#58CC02">#58CC02</span><span style="background:#E0EAE0">White Green</span><span style="background:#666;color:#fff">Storm Dust</span></div>
+<table><thead><tr><th>Style</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Header One</td><td>24 px</td><td>Poppins Medium</td></tr><tr><td>Header Two</td><td>20 px</td><td>Poppins Medium</td></tr><tr><td>Body</td><td>16 px</td><td>Poppins Regular</td></tr><tr><td>Small</td><td>14 px</td><td>Poppins Light</td></tr></tbody></table></div></div></section>
 
-<section id="impact" aria-labelledby="i"><h2 id="i">Patient data now lives inside the encounter note</h2>
-<div class="stats"><div><b>3</b>wireframe options explored</div><div><b>3</b>task groups, ordered by importance</div><div><b>2</b>workflows moved into encounter notes</div></div>
-<p class="lede">Each dashboard widget opens a filtered action page, and the dashboard can be filtered to one facility. Try the encounter note tabs below, which use sample data from the design.</p>
-<div class="tabs" role="tablist" aria-label="Encounter note tabs">
-<button role="tab" id="tb1" aria-controls="tp1" aria-selected="true" type="button">Exams</button>
-<button role="tab" id="tb2" aria-controls="tp2" aria-selected="false" type="button">Medications</button></div>
-<div role="tabpanel" id="tp1" aria-labelledby="tb1" class="panel" style="margin-top:1rem"><h3>Out of range report</h3>
-<table><thead><tr><th>Out of range</th><th>Date recorded</th><th>Status</th></tr></thead><tbody><tr><td>Temperature, respiratory, blood sugar, pain</td><td>Jan 10, 2024</td><td><span class="tag">Todo</span></td></tr></tbody></table></div>
-<div role="tabpanel" id="tp2" aria-labelledby="tb2" class="panel" style="margin-top:1rem" hidden><h3>Medications to reduce</h3>
-<table><thead><tr><th>Medication</th><th>Status</th></tr></thead><tbody><tr><td>Metoprolol succinate ER 50 mg</td><td><span class="tag">Todo</span></td></tr><tr><td>Metformin hydrochloride 500 mg</td><td><span class="tag">Todo</span></td></tr></tbody></table></div>
-<div class="prose" style="margin-top:2.5rem"><p><b>What we learned.</b> Bringing the workflow into the encounter note presents it as patient-centric data, reachable without leaving the visit.</p>
-<p><b>Next steps.</b> Observe users on the current dashboard to iterate on the schedule-based concept. Then test the proposed dashboard against document completion rate before or during visits, and pinpoint which data belongs in this view.</p></div></section></main>
-<footer class="foot"><a href="mailto:marj.corona97@gmail.com">marj.corona97@gmail.com</a><a href="index.html#work">All case studies</a>All case studies</a></footer></div><script>
+<section id="impact" aria-labelledby="i"><h2 id="i">Try a quiz question</h2>
+<div class="demo"><div class="stage"><div class="ph"><div class="bar2"></div><h4 style="text-align:center">Question #30</h4><div class="pg" role="img" aria-label="Quiz progress"><span style="width:94%"></span></div>
+<p class="qt">It is a property that instructs a computer system how to interpret the value of a piece of data.</p>
+<button class="btn ghost opt" type="button" aria-pressed="false" data-ok="1">Data Type</button><button class="btn ghost opt" type="button" aria-pressed="false">Data System</button>
+<p id="fb" class="note" role="status" style="font-size:.85rem;font-weight:600"></p></div></div>
+<div><h3>Feedback in words, not just color</h3><p class="muted">Every quiz ends with encouraging copy and a clear next step, such as a break or the next lesson. Streaks, quizzes and the certificate keep users moving.</p></div></div>
+<div class="stats"><div><b>3</b>students interviewed</div><div><b>4</b>user goal flows mapped</div><div><b>2</b>prototype iterations before build</div></div>
+<div class="prose"><p><b>What I learned.</b> Research is never wasted, however small. I also learned to ask why each deliverable matters instead of just ticking a list.</p>
+<p><b>Next steps.</b> Before any Google Play release, I would test with users and iterate, and keep updating both features and content as student needs change.</p></div></section></main>
+<footer class="foot"><a href="mailto:marj.corona97@gmail.com">marj.corona97@gmail.com</a><a href="index.html#work">All case studies</a></footer></div><script>
 (function(){
   [].forEach.call(document.querySelectorAll('.seg'),function(g){
     var bs=[].slice.call(g.querySelectorAll('button')),sec=g.closest('section');
