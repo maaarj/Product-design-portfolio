@@ -108,10 +108,7 @@ blockquote{margin:0;background:var(--soft);border-radius:14px;padding:1.4rem;fon
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 .btn{background:var(--app);border-color:var(--app)}.btn.ghost{background:#fff;color:var(--app)}.steps li.done,.steps li[aria-current="step"]{background:var(--app)}.chip{background:var(--tint)}
-.dash{width:100%;max-width:540px;background:#EEF0F4;color:#101820;border-radius:12px 12px 0 0;display:grid;grid-template-columns:38px 1fr;font:500 .68rem/1.3 var(--body);overflow:hidden}
-.dash aside{background:#0B2D5B;min-height:300px}.dc{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;padding:.6rem;align-items:start}
-.dc>div{display:grid;gap:.5rem}.w{background:#fff;border-radius:6px;padding:.5rem}.w p{display:flex;justify-content:space-between;margin:0;padding:.18rem 0;border-bottom:1px solid #E3E6EA}.w p:last-child{border:0}.w b{display:block;margin-bottom:.2rem}
-@media (max-width:520px){.dc{grid-template-columns:1fr 1fr}.dc>div:last-child{display:none}}
+.image-slot{width:100%;max-width:540px;height:300px}
 .wfm{display:grid;gap:.4rem;width:100%;max-width:300px}.wfm i{display:block;height:34px;background:rgba(255,255,255,.85);border:1.5px solid #6b767d;border-radius:4px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin:2rem 0}@media (max-width:700px){.stats{grid-template-columns:1fr}}
 .stats div{background:var(--soft);border-radius:14px;padding:1.4rem}.stats b{display:block;font:700 2.6rem/1 var(--display);color:var(--accent)}
@@ -126,9 +123,10 @@ table{border-collapse:collapse;width:100%;font-size:1rem}th,td{text-align:left;p
 .bar2{height:10px;background:#58CC02;margin:-1.4rem -1rem .8rem}.days{display:flex;gap:.25rem;justify-content:center;margin:.4rem 0 .8rem}.days span{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;border:1.5px solid #285C00;font-size:.65rem}.days .on{background:#58CC02;border-color:#58CC02}
 .crd{background:#E0EAE0;border-radius:8px;padding:.6rem;margin-bottom:.5rem}.pg{height:8px;border-radius:4px;background:#D5DADD;margin:.2rem 0 .8rem}.pg span{display:block;height:100%;border-radius:4px;background:#58CC02}
 .opt[aria-pressed="true"]{background:#E0EAE0;border-width:3px}.qt{border:1.5px solid #58CC02;border-radius:8px;padding:.6rem}
-</style></head><body>
+</style></head>
+<body>
 <a class="skip" href="#overview">Skip to case study</a>
-<div class="shell"><header class="bar"><a href="https://claude.ai/artifact/M9Cj8edaHdjD9AsG64yXZ6">Marjie Corona</a><nav aria-label="Case study sections"><a href="#overview">Overview</a><a href="#discovery">Discovery</a><a href="#flows">Flows</a><a href="#validation">Validation</a><a href="#impact">Impact</a></nav></header>
+<div class="shell"><header class="bar"><a href="/index.html">Marjie Corona</a><nav aria-label="Case study sections"><a href="#overview">Overview</a><a href="#discovery">Discovery</a><a href="#flows">Flows</a><a href="#validation">Validation</a><a href="#impact">Impact</a></nav></header>
 <main><section id="overview" class="hero" aria-labelledby="t"><div>
 <p class="muted">Web app dashboard redesign, Theoria Medical, 2022 to 2024</p>
 <h1 id="t">From a schedule to a patient-centric dashboard</h1>
@@ -136,12 +134,11 @@ table{border-collapse:collapse;width:100%;font-size:1rem}th,td{text-align:left;p
 <div><dt>The problem</dt><dd>The physician dashboard showed a schedule, not the tasks that needed attention, and physicians had to leave encounter notes to review documents.</dd></div>
 <div><dt>The outcome</dt><dd>A task-based dashboard in three groups, with filtered action pages, and flagged vitals and medications to reduce brought into the encounter note.</dd></div>
 <div><dt>My role</dt><dd>I joined at brainstorming, researched the pain points, contributed dashboard layout ideas and integrated the workflows into encounter notes.</dd></div></dl></div>
+
 <div class="stage" role="img" aria-label="Redesigned physician dashboard with medical documents, diagnostic results, flagged vitals, patient visits and open encounters widgets">
-<div class="dash" aria-hidden="true"><aside></aside><div class="dc">
-<div><div class="w"><b>Medical documents</b><p><span>To do</span><span>4</span></p><p><span>Pending</span><span>0</span></p><p><span>Done</span><span>0</span></p></div><div class="w"><p><span>Diagnostic results</span><span>14</span></p></div><div class="w"><p><span>Flagged vitals</span><span>22</span></p></div><div class="w"><p><span>Meds reduction</span><span>2</span></p></div></div>
-<div><div class="w"><b>Patient visits</b><p><span>Scheduled</span><span>8</span></p><p><span>Seen</span><span>2</span></p><p><span>Done</span><span>0</span></p></div><div class="w"><b>Quality assurance</b><p><span>Meetings</span><span>1</span></p><p><span>Encounter reviews</span><span>7</span></p></div></div>
-<div><div class="w"><b>Open encounters</b><p><span>Up to 48 hours</span><span>0</span></p><p><span>Up to 72 hours</span><span>0</span></p><p><span>Over 72 hours</span><span>0</span></p><p><span>Auditing</span><span>1</span></p><p><span>Signed today</span><span>1</span></p></div></div>
-</div></div></div></section>
+<div class="image-slot" aria-hidden="true"><img src="/case studies/img/Transitioning to Patient-centric data.png" alt="Screenshot of the redesigned dashboard showing medical documents, diganostic documents, flagged vitals, patient visits and open encounters widgets" style="width:100%;height:auto"></div>
+</div></section>
+
 <section id="discovery" aria-labelledby="d"><h2 id="d">Physicians kept leaving the note to find what they needed</h2>
 <p class="lede">Theoria Medical offers on-site medical staff and telemedicine. Its physicians use proprietary apps, including a specialized EHR. Care plans depend on labs, medications and medical reports, so that information has to be at hand.</p>
 <div class="cols">
