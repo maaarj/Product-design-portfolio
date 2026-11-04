@@ -87,7 +87,7 @@ p{margin:0 0 1rem}
 .seg{display:inline-flex;border:2px solid var(--ink);border-radius:99px;padding:3px;margin:1.5rem 0 1rem}
 .seg button{font:600 1rem var(--body);min-height:44px;padding:0 1.3rem;border:0;border-radius:99px;background:transparent;color:var(--ink);cursor:pointer}
 .seg button[aria-pressed="true"]{background:var(--pill);color:var(--pill-ink)}
-.cmp{display:grid;grid-template-columns:minmax(240px,300px) 1fr;gap:2rem;align-items:start}
+.cmp{display:grid;grid-template-columns:minmax(336px,420px) 1fr;gap:2rem;align-items:start}
 @media (max-width:760px){.cmp{grid-template-columns:1fr}}
 .cmp .stage{min-height:0;padding-top:1.5rem}
 .why{margin:0;padding:0;list-style:none;display:grid;gap:1rem}
@@ -127,6 +127,22 @@ table{border-collapse:collapse;width:100%;font-size:1rem}th,td{text-align:left;p
 .bar2{height:10px;background:#58CC02;margin:-1.4rem -1rem .8rem}.days{display:flex;gap:.25rem;justify-content:center;margin:.4rem 0 .8rem}.days span{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;border:1.5px solid #285C00;font-size:.65rem}.days .on{background:#58CC02;border-color:#58CC02}
 .crd{background:#E0EAE0;border-radius:8px;padding:.6rem;margin-bottom:.5rem}.pg{height:8px;border-radius:4px;background:#D5DADD;margin:.2rem 0 .8rem}.pg span{display:block;height:100%;border-radius:4px;background:#58CC02}
 .opt[aria-pressed="true"]{background:#E0EAE0;border-width:3px}.qt{border:1.5px solid #58CC02;border-radius:8px;padding:.6rem}
+
+/* image zoom */
+.zoom-btn{display:block;position:relative;padding:0;border:0;background:none;cursor:zoom-in;border-radius:14px;max-width:100%}
+.zoom-btn img{display:block;max-width:100%;height:auto;border-radius:inherit}
+.zoom-btn::after{content:"Enlarge";position:absolute;right:.6rem;bottom:.6rem;background:var(--pill);color:var(--pill-ink);font:600 .8rem var(--body);padding:.25rem .65rem;border-radius:99px;opacity:0;transition:opacity .15s}
+.zoom-btn:hover::after,.zoom-btn:focus-visible::after{opacity:1}
+@media (hover:none){.zoom-btn::after{opacity:1}}
+.lb{border:0;padding:0;margin:0;width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;background:transparent;color:#fff}
+.lb::backdrop{background:rgba(5,8,12,.92)}
+.lb[open]{display:grid;grid-template-rows:1fr auto}
+.lb-stage{display:flex;overflow:auto;padding:4rem 1rem 1rem}
+.lb img{margin:auto;max-width:100%;max-height:calc(100dvh - 9rem);width:auto;height:auto;border-radius:8px;cursor:zoom-in}
+.lb.full img{max-width:none;max-height:none;cursor:zoom-out}
+.lb-cap{margin:0;padding:.75rem 1rem 1.25rem;text-align:center;font:500 .95rem/1.4 var(--body)}
+.lb-close{position:fixed;top:max(.75rem,env(safe-area-inset-top));right:.75rem;min-width:44px;min-height:44px;padding:0 1rem;border:0;border-radius:99px;background:#fff;color:#101820;font:600 1rem var(--body);cursor:pointer}
+body:has(.lb[open]){overflow:hidden}
 </style></head>
 
 <body>
@@ -142,7 +158,7 @@ table{border-collapse:collapse;width:100%;font-size:1rem}th,td{text-align:left;p
 
 <!-- Fix the UI snippet here -->
 <div class="stage" role="img" aria-label="Redesigned physician dashboard with medical documents, diagnostic results, flagged vitals, patient visits and open encounters widgets">
-  <div class="image-slot" aria-hidden="true"><img src="/img/MacBook Air - 1.png" style="width:100%;height:auto"></div>
+  <div class="image-slot" aria-hidden="true"><img src="/img/MacBook Air - 1.png" data-zoom="" style="width:100%;height:auto"></div>
 </div></section>
 
 <section id="discovery" aria-labelledby="d"><h2 id="d">Physicians kept leaving the note to find what they needed</h2>
@@ -164,7 +180,7 @@ table{border-collapse:collapse;width:100%;font-size:1rem}th,td{text-align:left;p
 <section id="flows" aria-labelledby="f"><h2 id="f">Mapping where the visit workflow breaks</h2>
 <p class="lede">Dashed boxes show the existing journey. The loops back to “find” steps are where time is lost.</p>
 <!-- <ol class="flow"><li><b>Old dashboard</b><span>Check schedule and reason for visit</span></li><li><b>Patient chart</b><span>Review records, conditions, nursing and encounter notes</span></li><li><b>Medical documents</b><span>Labs, imaging and more</span></li><li><b>Encounters page</b><span>Create visit note</span></li><li><b>Fill out note</b><span>Find the encounter note and documents again</span></li><li><b>Sign and submit</b><span>Close the encounter</span></li></ol> -->
-<img class="flow-image" src="/img/user flow-dashboard to encounter.png" alt="User flow showing the physician dashboard workflow">
+<img class="flow-image" src="/img/initial flow.png" data-zoom="" alt="User flow showing the physician dashboard workflow">
 
 <p class="muted" style="margin-top:1rem">Two loops stand out: finding the encounter note, and going back to find a medical document mid-visit.</p>
 <h3 style="margin-top:2.5rem">Proposed flow</h3>
@@ -177,9 +193,9 @@ table{border-collapse:collapse;width:100%;font-size:1rem}th,td{text-align:left;p
   <p class="lede">We presented three wireframes as final options. Switch between them to compare.</p>
   <div class="seg" role="group" aria-label="Wireframe options"><button type="button" aria-pressed="true" data-v="a">Option 1</button><button type="button" aria-pressed="false" data-v="b">Option 2</button><button type="button" aria-pressed="false" data-v="c">Option 3</button></div>
   <div class="cmp"><div class="stage" style="padding-bottom:1.5rem">
-  <img class="wfm" data-panel="a" src="/img/wireframe-option-1.png" alt="Wireframe option 1">
-  <img class="wfm" data-panel="b" src="/img/wireframe-option-2.png" alt="Wireframe option 2" hidden>
-  <img class="wfm" data-panel="c" src="/img/wireframe-option-3.png" alt="Wireframe option 3" hidden></div>
+  <img class="wfm" data-panel="a" src="/img/Wireframe 1.png" data-zoom="" alt="Wireframe option 1">
+  <img class="wfm" data-panel="b" src="/img/Wireframe 2.png" data-zoom="" alt="Wireframe option 2" hidden>
+  <img class="wfm" data-panel="c" src="/img/Wireframe 3.png" data-zoom="" alt="Wireframe option 3" hidden></div>
 <ul class="why">
 <li data-panel="a"><b>Option 1: summary tiles first.</b><br>Tiles for admitted today, discharges, missed visits and meds reduction sit above lists of open encounters, visits and documents.</li>
 <li data-panel="b" hidden><b>Option 2: task widgets beside the schedule. Chosen.</b><br>Medical documents, diagnostic results, flagged vitals and meds reduction sit with patient schedules and encounters. We pushed for this one because it scales better, and built it around visits and encounters as proof of work.</li>
@@ -193,7 +209,8 @@ table{border-collapse:collapse;width:100%;font-size:1rem}th,td{text-align:left;p
 
 <div class="prose" style="margin-top:2.5rem"><p><b>What we learned.</b> Bringing the workflows into the encounter note presents it as patient-centric data, reachable without leaving the visit.</p>
 <p><b>Next steps.</b> Observe users on the current dashboard to iterate on the schedule-based concept. Then test the proposed dashboard against document completion rate before or during visits, and pinpoint which data belongs in this view.</p></div></section></main>
-<footer class="foot"><a href="mailto:marj.corona97@gmail.com">marj.corona97@gmail.com</a><a href="index.html">All case studies</a></footer></div><script>
+<footer class="foot"><a href="mailto:marj.corona97@gmail.com">marj.corona97@gmail.com</a><a href="index.html">All case studies</a></footer></div>
+<script>
 (function(){
   [].forEach.call(document.querySelectorAll('.seg'),function(g){
     var bs=[].slice.call(g.querySelectorAll('button')),sec=g.closest('section');
@@ -215,5 +232,48 @@ table{border-collapse:collapse;width:100%;font-size:1rem}th,td{text-align:left;p
     q.forEach(function(x){x.setAttribute('aria-pressed',x===o)});
     fb.textContent=o.dataset.ok?'Good job! You got 25/30 correct answers.':'Not quite. Try again.';
   })});
+})();
+(function () {
+  function initZoom() {
+    var imgs = document.querySelectorAll('img[data-zoom]');
+    if (!imgs.length || !window.HTMLDialogElement) return;
+
+    var d = document.createElement('dialog');
+    d.className = 'lb';
+    d.setAttribute('aria-label', 'Image viewer');
+    d.innerHTML = '<button class="lb-close" type="button">Close</button><div class="lb-stage"><img alt=""></div><p class="lb-cap"></p>';
+    document.body.appendChild(d);
+
+    var big = d.querySelector('img'),
+        cap = d.querySelector('.lb-cap');
+
+    imgs.forEach(function (img) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'zoom-btn';
+      b.setAttribute('aria-label', 'Enlarge image: ' + (img.alt || 'image'));
+      img.parentNode.insertBefore(b, img);
+      b.appendChild(img);
+      b.addEventListener('click', function () {
+        big.src = img.dataset.zoom || img.currentSrc || img.src;
+        big.alt = img.alt;
+        cap.textContent = img.alt;
+        d.classList.remove('full');
+        d.showModal();
+      });
+    });
+
+    big.addEventListener('click', function () { d.classList.toggle('full'); });
+    d.querySelector('.lb-close').addEventListener('click', function () { d.close(); });
+    d.addEventListener('click', function (e) {
+      if (e.target === d || e.target.classList.contains('lb-stage')) d.close();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initZoom);
+  } else {
+    initZoom();
+  }
 })();
 </script></body></html>
