@@ -10,10 +10,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
---bg:#E9ECEA;--panel:#FFFFFF;--soft:#F1F4F2;--ink:#101820;--muted:#3D4650;--line:#C9CFCC;--accent:#0A5A3D;--tint:#BFE3D2;--pill:#101820;--pill-ink:#FFFFFF;
+--bg:#E9ECEA;--panel:#FFFFFF;--soft:#F1F4F2;--ink:#101820;--muted:#3D4650;--line:#C9CFCC;--accent:#0B4F6C;--tint:#B9D7F2;--pill:#101820;--pill-ink:#FFFFFF;
 --display:"Bricolage Grotesque","Avenir Next","Segoe UI",sans-serif;--body:"Instrument Sans","Avenir Next","Segoe UI",sans-serif}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0C1114;--panel:#151C20;--soft:#1D262B;--ink:#F2F4F3;--muted:#C3CBCF;--line:#3A464C;--accent:#8FE0B8;--pill:#F2F4F3;--pill-ink:#101820}}
-:root[data-theme="dark"]{color-scheme:dark;--bg:#0C1114;--panel:#151C20;--soft:#1D262B;--ink:#F2F4F3;--muted:#C3CBCF;--line:#3A464C;--accent:#8FE0B8;--pill:#F2F4F3;--pill-ink:#101820}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0C1114;--panel:#151C20;--soft:#1D262B;--ink:#F2F4F3;--muted:#C3CBCF;--line:#3A464C;--accent:#8CCBE6;--pill:#F2F4F3;--pill-ink:#101820}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0C1114;--panel:#151C20;--soft:#1D262B;--ink:#F2F4F3;--muted:#C3CBCF;--line:#3A464C;--accent:#8CCBE6;--pill:#F2F4F3;--pill-ink:#101820}
 html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 4.5rem);scroll-behavior:smooth}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
@@ -88,15 +88,16 @@ p{width:100%;max-width:none;margin:0 0 1rem}
 .tree .panel{max-width:none}
 
 /* 4 compare */
-.seg{display:inline-flex;border:2px solid var(--ink);border-radius:99px;padding:3px;margin:1.5rem 0 1rem}
-.seg button{font:600 1rem var(--body);min-height:44px;padding:0 1.3rem;border:0;border-radius:99px;background:transparent;color:var(--ink);cursor:pointer}
+.seg{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.5rem 0 1rem}
+.seg button{font:600 1rem var(--body);min-height:44px;padding:.5rem 1rem;border:2px solid var(--line);border-radius:99px;background:transparent;color:var(--ink);cursor:pointer}
 .seg button[aria-pressed="true"]{background:var(--pill);color:var(--pill-ink)}
-.cmp{display:grid;grid-template-columns:minmax(240px,300px) 1fr;gap:2rem;align-items:start}
-@media (max-width:760px){.cmp{grid-template-columns:1fr}}
-.cmp .stage{min-height:0;padding-top:1.5rem}
-.why{margin:0;padding:0;list-style:none;display:grid;gap:1rem}
-.why li{border-top:1px solid var(--line);padding-top:.8rem}
-.why b{font-family:var(--display)}
+.version-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.version{min-width:0;background:var(--soft);border-radius:14px;padding:1rem}
+.version h3{margin-bottom:.75rem}
+.version img{display:block;width:100%;max-width:260px;height:520px;object-fit:contain;margin:0 auto;border:6px solid #101820;border-radius:20px;background:#fff}
+.version-wide img{max-width:none;height:auto;max-height:520px;border:0;border-radius:0;background:transparent}
+.change-rationale{margin-top:1rem}
+.change-rationale b{font-family:var(--display)}
 [hidden]{display:none!important}
 
 /* 5 impact */
@@ -204,36 +205,39 @@ body:has(.lb[open]){overflow:hidden}
 
 <section id="validation" aria-labelledby="v">
   <h2 id="v">Before and after, change by change</h2>
-  <p class="lede">Switch views to compare the booking summary, then read why each change was made.</p>
-  <div class="seg" role="group" aria-label="Compare versions">
-    <button type="button" aria-pressed="false" data-v="before">Before</button>
-    <button type="button" aria-pressed="true" data-v="after">After</button>
+  <p class="lede">Select a design change to compare the before and after side by side.</p>
+  <div class="seg" role="group" aria-label="Select a design change">
+    <button type="button" aria-pressed="true" data-change="availability">Open dates and status</button>
+    <button type="button" aria-pressed="false" data-change="cancellation">Cancel on booking summary</button>
+    <button type="button" aria-pressed="false" data-change="confirmation">System feedback</button>
+    <button type="button" aria-pressed="false" data-change="progress">Progress tracker</button>
   </div>
-  <div class="cmp">
-    <div class="stage">
-      <div class="ph" data-panel="before" hidden aria-label="Before design">
-        <h4>Booking <span aria-hidden="true" style="float:right">⋮</span></h4>
-        <p class="note">Steps 1 2 3 shown as numbers</p>
-        <div class="row"><span>Pickup</span><span>Sat, 9 AM</span></div>
-        <div class="row"><span>Status</span><span>Booked</span></div>
-        <span class="btn" style="display:grid;place-items:center">Book now</span>
-        <p class="note">No way to cancel here.</p>
+  <div class="change-panels">
+    <div data-change-panel="availability">
+      <div class="version-pair">
+        <article class="version"><h3>Before</h3><img src="/img/Trash panda current homepage.png" alt="Current home screen with impact section, upcoming schedule with book now button, and coaching corner"></article>
+        <article class="version"><h3>After</h3><img src="/img/Redesigned No upcoming schedule - Homepage.png" alt="Redesigned home screen with bigger impact widget, collection schedules lists an empty section for their upcoming schedule and list of open dates "></article>
       </div>
-      <div class="ph" data-panel="after" aria-label="After design">
-        <h4>Booking summary <span aria-hidden="true" style="float:right">≡</span></h4>
-        <ol class="steps"><li class="done"></li><li class="done"></li><li aria-current="step"></li></ol>
-        <div class="row"><span>Pickup</span><span>Sat, 9 AM</span></div>
-        <div class="row"><span>Status</span><span class="chip">Confirmed</span></div>
-        <span class="btn ghost" style="display:grid;place-items:center">Cancel booking</span>
-        <div class="nb"><span>Home</span><span>Fees</span><span>Recyclables</span></div>
-      </div>
+      <p class="change-rationale"><b>Why it changed.</b> Showing open dates and booking status on the home screen saves people from checking email or simulating a booking.</p>
     </div>
-    <ul class="why">
-      <li><b>Open dates and booking status replace “Book now.”</b><br>Booked users were already checking email or simulating bookings to see availability, so the home screen now shows it.</li>
-      <li><b>Cancel sits on the booking summary.</b><br>Easy to reach, and visible to Trash Panda. When it’s disabled, a written note says so, so the state isn’t left unexplained.</li>
-      <li><b>Confirmation popups with a second confirmation and undo.</b><br>Users know the system received their request and can reverse a mistake.</li>
-      <li><b>Progress tracker replaces step numbers.</b><br>Shows how many steps remain, where you are and what’s done.</li>
-    </ul>
+    <div data-change-panel="cancellation" hidden>
+      <div class="version-pair">
+        <article class="version"><h3>Before</h3><img src="/img/current booking summary.png" alt="Placeholder for the before booking summary"></article>
+        <article class="version"><h3>After</h3><img src="/img/redesigned booking summary.png" alt="Placeholder for the after booking summary"></article>
+      </div>
+      <p class="change-rationale"><b>Why it changed.</b> Putting Cancel on the booking summary makes it easy to find and makes the request visible to Trash Panda.</p>
+    </div>
+    <div data-change-panel="confirmation" hidden>
+      <article class="version version-wide"><h3>After</h3><img src="/img/B&A - System feedback.png" alt="Placeholder for the cancellation confirmation and undo flow"></article>
+      <p class="change-rationale"><b>Why it changed.</b> Confirmation makes the action clear; a follow-up status and Undo help users recover from mistakes.</p>
+    </div>
+    <div data-change-panel="progress" hidden>
+      <div class="version-pair">
+        <article class="version"><h3>Before</h3><img src="/img/Trash%20panda%20redesigned%20homepage.png" alt="Placeholder for the before booking progress screen"></article>
+        <article class="version"><h3>After</h3><img src="/img/Trash%20panda%20redesigned%20homepage.png" alt="Placeholder for the after booking progress screen"></article>
+      </div>
+      <p class="change-rationale"><b>Why it changed.</b> The progress tracker shows what’s complete, where the user is, and how many steps remain.</p>
+    </div>
   </div>
 </section>
 
@@ -279,10 +283,10 @@ body:has(.lb[open]){overflow:hidden}
 <script>
 (function(){
   var $=function(s){return document.querySelector(s)};
-  var seg=[].slice.call(document.querySelectorAll('.seg button'));
-  seg.forEach(function(b){b.addEventListener('click',function(){
-    seg.forEach(function(x){x.setAttribute('aria-pressed',x===b)});
-    [].forEach.call(document.querySelectorAll('[data-panel]'),function(p){p.hidden=p.dataset.panel!==b.dataset.v});
+  var changes=[].slice.call(document.querySelectorAll('[data-change]'));
+  changes.forEach(function(b){b.addEventListener('click',function(){
+    changes.forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+    [].forEach.call(document.querySelectorAll('[data-change-panel]'),function(p){p.hidden=p.dataset.changePanel!==b.dataset.change});
   })});
   var d=$('#dlg'),t=$('#toast'),c=$('#chip'),cb=$('#cancel');
   cb.addEventListener('click',function(){d.showModal?d.showModal():d.setAttribute('open','')});
