@@ -27,14 +27,14 @@ a{color:inherit}
 .bar a{text-decoration:none;font-weight:500;min-height:44px;display:inline-flex;align-items:center}
 .bar nav{display:flex;gap:1.1rem;flex-wrap:wrap}
 .bar a:hover{text-decoration:underline;text-underline-offset:5px}
-h1,h2,h3{font-family:var(--display);letter-spacing:-.02em;margin:0}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.02em;margin:0;width:100%;max-width:none}
 h1{font-size:clamp(2.6rem,6vw,4.4rem);line-height:1}
-h2{font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1.12;max-width:24ch}
+h2{font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1.12}
 h3{font-size:1.15rem;line-height:1.3}
 section{padding-top:clamp(3.5rem,8vw,6rem)}
-.lede{max-width:62ch;color:var(--muted);margin:1rem 0 2rem}
-p{margin:0 0 1rem}
-.prose{max-width:64ch}
+.lede{width:100%;max-width:none;color:var(--muted);margin:1rem 0 2rem}
+p{width:100%;max-width:none;margin:0 0 1rem}
+.prose{width:100%;max-width:none}
 .muted{color:var(--muted)}
 
 /* 1 hero */
@@ -43,7 +43,10 @@ p{margin:0 0 1rem}
 .brief{margin:2rem 0 0;display:grid;gap:1.1rem}
 .brief dt{font:600 1rem var(--display);color:var(--accent)}
 .brief dd{margin:.1rem 0 0;max-width:56ch}
-.stage{background:var(--tint);border-radius:18px;padding:clamp(1.5rem,5vw,3rem) 1rem 0;display:grid;place-items:end center;overflow:hidden;min-height:440px}
+.stage{background:var(--tint);border-radius:18px;padding:16px;display:grid;place-items:start center;overflow:hidden;aspect-ratio:1;min-height:0}
+.stage .image-slot{overflow:hidden;border-radius:20px;width:min(100%,260px);border:4px solid #000}
+.stage .image-slot>.zoom-btn{width:100%;height:100%;max-width:none;overflow:hidden;border-radius:inherit;line-height:0}
+.stage .image-slot img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;padding:0;margin:0}
 
 /* phone ui */
 .ph{width:min(260px,70vw);background:#fff;color:#101820;border:6px solid #101820;border-bottom:0;border-radius:30px 30px 0 0;padding:1.4rem 1rem 1.2rem;font:500 .8rem/1.35 var(--body)}
@@ -151,16 +154,9 @@ body:has(.lb[open]){overflow:hidden}
       <div><dt>My role</dt><dd>I ran the research, synthesis, sketching, UI design and usability retest.</dd></div>
     </dl>
   </div>
-  <div class="stage" role="img" aria-label="Redesigned booking summary screen with progress tracker and cancel button">
-    <div class="ph" aria-hidden="true">
-      <h4>Booking summary</h4>
-      <ol class="steps"><li class="done"></li><li class="done"></li><li aria-current="step"></li></ol>
-      <div class="row"><span>Pickup</span><span>Sat, 9 AM</span></div>
-      <div class="row"><span>Estimated fee</span><span>Shown upfront</span></div>
-      <div class="row"><span>Status</span><span class="chip">Confirmed</span></div>
-      <span class="btn ghost" style="display:grid;place-items:center">Cancel booking</span>
-      <p class="note">Unavailable close to pickup. Note explains why.</p>
-      <div class="nb"><span>Home</span><span>Fees</span><span>Recyclables</span></div>
+  <div class="stage">
+    <div class="image-slot">
+      <img src="/img/Trash panda redesigned homepage.png" data-zoom="" alt="Trash Panda redesigned home screen showing booked pickup date, status and impact">
     </div>
   </div>
 </section>
@@ -170,10 +166,14 @@ body:has(.lb[open]){overflow:hidden}
   <p class="lede">The app was easy to use, but missing answers pushed people to Facebook, the website or email.</p>
   <div class="cols">
     <div class="panel"><h3>How I researched</h3>
-      <ul><li>Read comments on the company’s Facebook page for the big picture</li><li>Invited commenters to interviews and usability testing</li><li>Ran one usability round on the current app</li><li>Grouped findings into themes and ranked them by how often they came up</li></ul></div>
-    <div class="panel persona"><h3>Persona: Jane</h3>
-      <p>A waste-conscious customer who books recyclable pick-ups and wants to know what to expect before she commits.</p>
-      <p class="muted">Add her photo, goals and frustrations here.</p></div>
+      <ul><li>Read <a href="/img/user%20concerns%20on%20facebook.png" data-zoom="" aria-label="View comments from Facebook">comments</a> on the company’s Facebook page for the big picture</li>
+        <li>Invited commenters to interviews and usability testing</li>
+        <li>Ran one usability round on the current app and one for the redesigned app</li>
+        <li>Grouped findings into <a href="/img/trash%20panda%20affinity%20diagram.png.png" data-zoom="" aria-label="View the research themes affinity diagram">themes</a> and ranked them by how often they came up</li>
+      </ul></div>
+    <div class="panel persona"><h3>Persona:</h3>
+      <p>Jane</p>
+      <p>A waste-conscious customer who wants a more reliable way of knowing her recyclables goes to the right facilities. She usually takes her recyclables to bins, or places that accepts them.</p></div>
     <div class="panel"><h3>Design objectives</h3>
       <ul><li>Make key service information easy to find</li><li>Keep the app simple</li><li>Give the business a systematic way to track cancellations</li></ul></div>
   </div>
@@ -289,6 +289,47 @@ body:has(.lb[open]){overflow:hidden}
   $('#no').addEventListener('click',function(){d.close()});
   $('#yes').addEventListener('click',function(){d.close();c.textContent='Cancelled';t.hidden=false;cb.hidden=true});
   $('#undo').addEventListener('click',function(){c.textContent='Confirmed';t.hidden=true;cb.hidden=false;cb.focus()});
+})();
+(function(){
+  var items=document.querySelectorAll('img[data-zoom],a[data-zoom]');
+  if(!items.length)return;
+
+  var d=document.createElement('dialog');
+  d.className='lb';
+  d.setAttribute('aria-label','Image viewer');
+  d.innerHTML='<button class="lb-close" type="button">Close</button><div class="lb-stage"><img alt=""></div><p class="lb-cap"></p>';
+  document.body.appendChild(d);
+
+  var big=d.querySelector('.lb-stage img'),
+      cap=d.querySelector('.lb-cap');
+
+  items.forEach(function(item){
+    var isImage=item.tagName==='IMG',
+        trigger=item,
+        alt=isImage?item.alt:(item.getAttribute('aria-label')||item.textContent.trim());
+    if(isImage){
+      trigger=document.createElement('button');
+      trigger.type='button';
+      trigger.className='zoom-btn';
+      trigger.setAttribute('aria-label','Enlarge image: '+(alt||'image'));
+      item.parentNode.insertBefore(trigger,item);
+      trigger.appendChild(item);
+    }
+    trigger.addEventListener('click',function(event){
+      if(!isImage)event.preventDefault();
+      big.src=item.dataset.zoom||(isImage?(item.currentSrc||item.src):item.href);
+      big.alt=alt;
+      cap.textContent=alt;
+      d.classList.remove('full');
+      d.showModal();
+    });
+  });
+
+  big.addEventListener('click',function(){d.classList.toggle('full')});
+  d.querySelector('.lb-close').addEventListener('click',function(){d.close()});
+  d.addEventListener('click',function(e){
+    if(e.target===d||e.target.classList.contains('lb-stage'))d.close();
+  });
 })();
 </script>
 </body>

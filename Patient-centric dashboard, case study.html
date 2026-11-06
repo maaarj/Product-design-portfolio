@@ -39,8 +39,8 @@ p{width:100%;margin:0 0 1rem}
 .brief{margin:2rem 0 0;display:grid;gap:1.1rem}
 .brief dt{font:600 1rem var(--display);color:var(--accent)}
 .brief dd{margin:.1rem 0 0;max-width:56ch}
-.stage{background:var(--tint);border-radius:18px;padding:16px;display:grid;place-items:center;overflow:hidden}
-.stage .image-slot{overflow:hidden;border:4px solid #000;width:100%;max-width:540px;border-radius:18px; height:auto;}
+.stage{background:var(--tint);border-radius:18px;padding:16px;display:grid;place-items:center;overflow:hidden;aspect-ratio:1}
+.stage .image-slot{overflow:hidden;border:4px solid #000;width:100%;max-width:540px;border-radius:18px; height:auto;padding:0;}
 .stage .image-slot img{display:block;width:100%;height:auto}
 
 /* phone ui */
@@ -72,18 +72,10 @@ p{width:100%;margin:0 0 1rem}
 .pains li{break-inside:avoid;padding:.75rem 0;border-top:1px solid var(--line)}
 
 /* 3 flow */
-.flow{list-style:none;margin:2rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:1rem 2.2rem}
-.flow li{position:relative;flex:1 1 150px;border:2px dashed var(--muted);border-radius:10px;padding:.9rem;min-height:92px;background:var(--panel)}
-.flow li:not(:last-child)::after{content:"";position:absolute;right:-1.7rem;top:50%;width:1.2rem;border-top:2px solid var(--muted)}
-.flow li.alt{border-style:solid;border-color:var(--accent)}
-.flow b{display:block;font-family:var(--display)}
-.flow span{font-size:.95rem;color:var(--muted)}
 .flow-image{display:block;width:100%;height:auto;margin:1.5rem 0;border-radius:14px}
-@media (max-width:700px){.flow li:not(:last-child)::after{display:none}.flow li{flex-basis:100%}}
 .tree{margin-top:2rem}
 .tree.proposed-flow{margin-top:24px}
 .tree.proposed-flow .flow-image{margin-top:0}
-.tree .panel{max-width:none}
 .impact-images{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;margin-top:1.5rem}
 .impact-images img{display:block;width:100%;height:auto;border-radius:14px}
 @media (max-width:700px){.impact-images{grid-template-columns:1fr}}
@@ -100,24 +92,11 @@ p{width:100%;margin:0 0 1rem}
 .why b{font-family:var(--display)}
 [hidden]{display:none!important}
 
-/* 5 impact */
-.demo{display:grid;grid-template-columns:minmax(240px,300px) 1fr;gap:2rem;align-items:center;margin-top:2rem}
-@media (max-width:760px){.demo{grid-template-columns:1fr}}
-.demo .stage{min-height:0;padding-top:1.5rem}
-.toast{position:relative;margin:.8rem 0 0;background:#101820;color:#fff;border-radius:10px;padding:.55rem .8rem;display:flex;justify-content:space-between;gap:.5rem;align-items:center}
-.toast button{background:none;border:0;color:#BFE3D2;font:600 .8rem var(--body);text-decoration:underline;min-height:44px;cursor:pointer}
-dialog{border:0;border-radius:16px;padding:1.4rem;max-width:min(340px,90vw);background:#fff;color:#101820;font:500 .95rem/1.4 var(--body)}
-dialog::backdrop{background:rgba(16,24,32,.6)}
-dialog h4{font:700 1.1rem var(--display);margin:0 0 .4rem}
-.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin:2rem 0}
-@media (max-width:860px){.quotes{grid-template-columns:1fr}}
-blockquote{margin:0;background:var(--soft);border-radius:14px;padding:1.4rem;font:500 1.1rem/1.4 var(--display)}
+/* Footer */
 .foot{margin-top:clamp(3rem,7vw,5rem);padding-top:1.5rem;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
 .foot a{font:600 1.1rem var(--display)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
-.btn{background:var(--app);border-color:var(--app)}.btn.ghost{background:#fff;color:var(--app)}.steps li.done,.steps li[aria-current="step"]{background:var(--app)}.chip{background:var(--tint)}
-.image-slot{width:100%;max-width:540px;height:300px}
 .wfm{display:block;width:100%;max-width:540px;height:auto;border-radius:4px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin:2rem 0}@media (max-width:700px){.stats{grid-template-columns:1fr}}
 .stats div{background:var(--soft);border-radius:14px;padding:1.4rem}.stats b{display:block;font:700 2.6rem/1 var(--display);color:var(--accent)}
@@ -202,7 +181,7 @@ body:has(.lb[open]){overflow:hidden}
 <li data-panel="b" hidden><b>Option 2: task widgets beside the schedule. Chosen.</b><br>Medical documents, diagnostic results, flagged vitals and meds reduction sit with patient schedules and encounters. We pushed for this one because it scales better, and built it around visits and encounters as proof of work.</li>
 <li data-panel="c" hidden><b>Option 3: alerts above a clinical workflow area.</b><br>Clinical results and flags lead, followed by a large workflow space and open encounters grouped by time.</li></ul></div></section>
 
-<section id="impact" aria-labelledby="i"><h2 id="i">Patient data now lives inside the encounter note</h2> <!-- rewrite this to accommodate organizational/facility task and to accommodate patient visit notes-->
+<section id="impact" aria-labelledby="i"><h3 id="i">Patient data now lives inside the encounter note</h3> <!-- rewrite this to accommodate organizational/facility task and to accommodate patient visit notes-->
 
 <p class="lede">Each dashboard widget opens a filtered action page.</p>
 
@@ -213,7 +192,7 @@ body:has(.lb[open]){overflow:hidden}
 
 <div class="prose" style="margin-top:2.5rem">
   <h3>What we learned.</h3>
-  <p><b>Providers:</b> Bringing the workflows into the encounter note presents it as patient-centric data, reachable without leaving the visit and provides more context for decision-making but the dashboard design needs refinement.</p>
+  <p><b>Providers:</b> Bringing the workflows into the encounter note presents it as patient-centric data, reachable without leaving the visit and provides more context for decision-making but the dashboard design needs refinement. Saves the time in decision-making and </p>
   <p><b>Admins:</b> Provides an improved way of monitoring medical documents and clinical workflows.</p>
   <h3>Next steps</h3>
   <p>Observe users on the current dashboard to iterate on the schedule-based concept. Then test the proposed dashboard against document completion rate before or during visits, and pinpoint which data belongs in this view.</p>
@@ -228,19 +207,6 @@ body:has(.lb[open]){overflow:hidden}
       [].forEach.call(sec.querySelectorAll('[data-panel]'),function(p){p.hidden=p.dataset.panel!==b.dataset.v});
     })});
   });
-  [].forEach.call(document.querySelectorAll('.tabs'),function(t){
-    var bs=[].slice.call(t.querySelectorAll('button')),sec=t.parentNode;
-    bs.forEach(function(b,i){
-      b.addEventListener('click',function(){bs.forEach(function(x){x.setAttribute('aria-selected',x===b)});
-        [].forEach.call(sec.querySelectorAll('[role=tabpanel]'),function(p){p.hidden=p.id!==b.getAttribute('aria-controls')})});
-      b.addEventListener('keydown',function(e){var n=e.key==='ArrowRight'?i+1:e.key==='ArrowLeft'?i-1:null;if(n===null)return;n=(n+bs.length)%bs.length;bs[n].focus();bs[n].click()});
-    });
-  });
-  var q=[].slice.call(document.querySelectorAll('.opt')),fb=document.getElementById('fb');
-  q.forEach(function(o){o.addEventListener('click',function(){
-    q.forEach(function(x){x.setAttribute('aria-pressed',x===o)});
-    fb.textContent=o.dataset.ok?'Good job! You got 25/30 correct answers.':'Not quite. Try again.';
-  })});
 })();
 (function () {
   function initZoom() {
