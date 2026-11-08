@@ -25,7 +25,7 @@ a{color:inherit}
 .bar a:hover{text-decoration:underline;text-underline-offset:5px}
 h1,h2,h3{width:100%;font-family:var(--display);letter-spacing:-.02em;margin:0}
 h1{font-size:clamp(2.6rem,6vw,4.4rem);line-height:1}
-h2{font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1.12}
+h2{font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1.12;margin-bottom:1rem}
 h3{font-size:1.15rem;line-height:1.3}
 section{padding-top:clamp(3.5rem,8vw,6rem)}
 .lede{color:var(--muted);margin:1rem 0 2rem}
@@ -162,7 +162,6 @@ body:has(.lb[open]){overflow:hidden}
 
 <section id="flows" aria-labelledby="f"><h2 id="f">Mapping where the visit workflow breaks</h2>
 <p class="lede">Two loops stand out: finding the encounter note, and going back to find a medical document mid-visit. This is whre time is lost</p>
-<!-- <ol class="flow"><li><b>Old dashboard</b><span>Check schedule and reason for visit</span></li><li><b>Patient chart</b><span>Review records, conditions, nursing and encounter notes</span></li><li><b>Medical documents</b><span>Labs, imaging and more</span></li><li><b>Encounters page</b><span>Create visit note</span></li><li><b>Fill out note</b><span>Find the encounter note and documents again</span></li><li><b>Sign and submit</b><span>Close the encounter</span></li></ol> -->
 <img class="flow-image" src="/img/initial flow.png" data-zoom="" alt="User flow showing the physician dashboard workflow">
 <h3 style="margin-top:2.5rem">Proposed flow</h3>
 <div class="tree proposed-flow"><img class="flow-image" src="/img/after flow.png" data-zoom="" alt="User flow showing the physician dashboard workflow"></div>
@@ -191,12 +190,13 @@ body:has(.lb[open]){overflow:hidden}
 </div>
 
 <div class="prose" style="margin-top:2.5rem">
-  <h3>What we learned.</h3>
-  <p><b>Providers:</b> Bringing the workflows into the encounter note presents it as patient-centric data, reachable without leaving the visit and provides more context for decision-making but the dashboard design needs refinement. Saves the time in decision-making and </p>
+  <h2>What we learned.</h2>
+  <p><b>Providers:</b>Bringing the workflows into the encounter note saves time in decision-making and signing note but the dashboard needs refinement. They prioritize their schedule for the day and work through the medical documents from there.</p>
   <p><b>Admins:</b> Provides an improved way of monitoring medical documents and clinical workflows.</p>
   <h3>Next steps</h3>
   <p>Observe users on the current dashboard to iterate on the schedule-based concept. Then test the proposed dashboard against document completion rate before or during visits, and pinpoint which data belongs in this view.</p>
 </div></section></main>
+
 <footer class="foot"><a href="mailto:marj.corona97@gmail.com">marj.corona97@gmail.com</a><a href="index.html">All case studies</a></footer></div>
 <script>
 (function(){
