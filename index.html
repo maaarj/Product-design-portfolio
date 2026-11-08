@@ -59,9 +59,10 @@ section+section{margin-top:clamp(3.5rem,8vw,6rem)}
 
 /* css device mocks (decorative) */
 .phone{width:36%;aspect-ratio:9/18;background:#fff;border:5px solid #101820;border-radius:22px;padding:12% 9% 0;display:flex;flex-direction:column;gap:7%;transform:translateY(12%) rotate(-4deg)}
-.win{width:78%;aspect-ratio:16/10.5;background:#fff;border:2px solid #101820;border-radius:10px;display:grid;grid-template-columns:20% 1fr;transform:translateY(10%)}
+.win{width:78%;aspect-ratio:16/10.5;background:#fff;border:2px solid #101820;border-radius:10px;display:grid;grid-template-columns:20% 1fr;transform:translateY(10%);overflow:hidden}
 .win>i{background:#101820;opacity:.9}
 .win>div{padding:8%;display:flex;flex-direction:column;gap:9%}
+.win img{grid-column:1/-1;display:block;width:100%;height:100%;object-fit:cover;object-position:center}
 .b{display:block;height:7px;border-radius:4px;background:#C9D1D6}
 .b.w{width:60%}.b.s{width:35%}
 .b.hi{background:#0E7A55;height:10px}
@@ -115,7 +116,10 @@ section+section{margin-top:clamp(3.5rem,8vw,6rem)}
     <section id="work" aria-labelledby="work-h">
       <h2 id="work-h">Selected work</h2>
       <ul class="grid">
-        <li class="wide"><a class="card" href="Patient-centric dashboard, case study.html"><div class="tile t2" aria-hidden="true"><div class="win"><i></i><div><span class="b w"></span><div class="bars"><span style="height:45%"></span><span style="height:80%"></span><span style="height:60%"></span><span style="height:95%"></span></div><span class="b"></span></div></div></div><h3>Theoria Medical: from a schedule to a tactical dashboard</h3><p>Reworked a physician dashboard around the tasks that need attention, and brought flagged vitals and medications into encounter notes.</p></a></li>
+        <li class="wide"><a class="card" href="Patient-centric dashboard, case study.html">
+          <div class="tile t2" aria-hidden="true">
+            <div class="win"><img src="/img/MacBook Air - 1.png" alt="Theoria Medical dashboard"></div>
+            </div><h3>Theoria Medical: from a schedule to a tactical dashboard</h3><p>Reworked a physician dashboard around the tasks that need attention, and brought flagged vitals and medications into encounter notes.</p></a></li>
         <li><a class="card" href="Trash Panda redesign, case study.html"><div class="tile t1" aria-hidden="true"><div class="phone"><span class="b w"></span><span class="b hi"></span><span class="b"></span><span class="b hi"></span><span class="b s"></span></div></div><h3>Trash Panda: find answers, cancel in the app</h3><p>Research-led redesign of a recycling pick-up app, adding rates, cancellation and clear confirmations.</p></a></li>
         <li><a class="card" href="Code app, case study.html"><div class="tile t5" aria-hidden="true"><div class="phone"><span class="bub"></span><span class="bub me"></span><span class="bub"></span><span class="b hi"></span></div></div><h3>#Code: bite-size C# lessons</h3><p>Android study app for beginners, from interviews to a built app with streaks and a certificate.</p></a></li>
         <!-- Unhide when done 
