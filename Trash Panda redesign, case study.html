@@ -43,7 +43,9 @@ p{width:100%;margin:0 0 1rem}
 .brief{margin:2rem 0 0;display:grid;gap:1.1rem}
 .brief dt{font:600 1rem var(--display);color:var(--accent)}
 .brief dd{margin:.1rem 0 0;max-width:56ch}
-.stage{background:var(--tint);border-radius:18px;padding:clamp(1.5rem,5vw,3rem) 1rem 0;display:grid;place-items:end center;overflow:hidden;min-height:440px}
+.stage{background:var(--tint);border-radius:18px;padding:clamp(1.5rem,5vw,3rem) 1rem 0;display:grid;place-items:end center;overflow:hidden;aspect-ratio:1}
+.stage-frame{place-self:center;width:50%;border:4px solid #000;border-radius:18px;overflow:hidden}
+.stage-frame img{display:block;width:100%;height:auto}
 
 /* phone ui */
 .ph{width:min(260px,70vw);background:#fff;color:#101820;border:6px solid #101820;border-bottom:0;border-radius:30px 30px 0 0;padding:1.4rem 1rem 1.2rem;font:500 .8rem/1.35 var(--body)}
@@ -94,6 +96,13 @@ p{width:100%;margin:0 0 1rem}
 .why{margin:0;padding:0;list-style:none;display:grid;gap:1rem}
 .why li{border-top:1px solid var(--line);padding-top:.8rem}
 .why b{font-family:var(--display)}
+.ba-carousel{margin:1.5rem 0 2rem;background:var(--soft);border-radius:16px;padding:1rem}
+.ba-slide{display:grid;place-items:center;min-height:220px}
+.ba-slide img{display:block;max-width:100%;max-height:min(65vh,680px);width:auto;height:auto;object-fit:contain;border-radius:10px}
+.ba-caption{margin:.75rem 0 0;text-align:center;color:var(--muted);font-weight:600}
+.ba-controls{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:.75rem}
+.ba-controls button{min-height:44px;padding:.45rem 1rem;border:1px solid var(--line);border-radius:99px;background:var(--panel);color:var(--ink);font:600 1rem var(--body);cursor:pointer}
+.ba-count{min-width:3.5ch;text-align:center;color:var(--muted)}
 [hidden]{display:none!important}
 
 /* 5 impact */
@@ -136,19 +145,19 @@ blockquote{margin:0;background:var(--soft);border-radius:14px;padding:1.4rem;fon
     </dl>
   </div>
   <div class="stage" role="img" aria-label="Redesigned booking summary screen with progress tracker and cancel button">
-    <!-- Image placeholder for redesigned booking summary screen -->
+    <div class="stage-frame"><img src="/img/Trash panda redesigned homepage.png" alt="Redesigned homepage with open dates and booked date with status, and a bottom nav bar to check fees and accepted recyclables list."></div>
   </div>
 </section>
 
 <section id="discovery" aria-labelledby="d">
   <h2 id="d">Customers left the app to finish simple tasks</h2>
-  <p class="lede">The app was easy to use, but missing answers pushed people to Facebook, the website or email.</p>
+  <p class="lede">The app was easy to use, but missing answers pushed people to Facebook, the website or email that creates a lot more work for a small team.</p>
   <div class="cols">
     <div class="panel"><h3>How I researched</h3>
       <ul><li>Read comments on the company’s Facebook page for the big picture</li><li>Invited commenters to interviews and usability testing</li><li>Ran one usability round on the current app</li><li>Grouped findings into themes and ranked them by how often they came up</li></ul></div>
     <div class="panel persona"><h3>Who it's for</h3> <!-- Rewrite this section-->
       <p>A waste-conscious customer who books recyclable pick-ups and wants to know what to expect before she commits.</p>
-      <p class="muted">Add her photo, goals and frustrations here.</p></div>
+    </div>
     <div class="panel"><h3>Design objectives</h3>
       <ul><li>Make key service information easy to find</li>
         <li>Keep the app simple</li>
@@ -163,7 +172,7 @@ blockquote{margin:0;background:var(--soft);border-radius:14px;padding:1.4rem;fon
     <li>They want the base rate to compare with other services.</li>
     <li>Booked users check email or simulate a booking to work out fees.</li>
     <li>They expect a map showing the driver’s location.</li>
-    <li>They assume cancelling means messaging on Facebook. Fees aren’t paid upfront, so this also costs the business.</li>
+    <li><b>They assume cancelling means messaging on Facebook. Fees aren’t paid upfront, so this also costs the business.</b></li>
   </ul>
 </section>
 
@@ -183,36 +192,30 @@ blockquote{margin:0;background:var(--soft);border-radius:14px;padding:1.4rem;fon
 
 <section id="validation" aria-labelledby="v">
   <h2 id="v">Before and after, change by change</h2>
-  <p class="lede">Switch views to compare the booking summary, then read why each change was made.</p>
-  <div class="seg" role="group" aria-label="Compare versions">
-    <button type="button" aria-pressed="false" data-v="before">Before</button>
-    <button type="button" aria-pressed="true" data-v="after">After</button>
-  </div>
-  <div class="cmp">
-    <div class="stage">
-      <div class="ph" data-panel="before" hidden aria-label="Before design">
-        <h4>Booking <span aria-hidden="true" style="float:right">⋮</span></h4>
-        <p class="note">Steps 1 2 3 shown as numbers</p>
-        <div class="row"><span>Pickup</span><span>Sat, 9 AM</span></div>
-        <div class="row"><span>Status</span><span>Booked</span></div>
-        <span class="btn" style="display:grid;place-items:center">Book now</span>
-        <p class="note">No way to cancel here.</p>
-      </div>
-      <div class="ph" data-panel="after" aria-label="After design">
-        <h4>Booking summary <span aria-hidden="true" style="float:right">≡</span></h4>
-        <ol class="steps"><li class="done"></li><li class="done"></li><li aria-current="step"></li></ol>
-        <div class="row"><span>Pickup</span><span>Sat, 9 AM</span></div>
-        <div class="row"><span>Status</span><span class="chip">Confirmed</span></div>
-        <span class="btn ghost" style="display:grid;place-items:center">Cancel booking</span>
-        <div class="nb"><span>Home</span><span>Fees</span><span>Recyclables</span></div>
-      </div>
+  <p class="lede">Browse the before-and-after screens, then read why each change was made.</p>
+  <div class="ba-carousel" aria-label="Before and after design images">
+    <figure class="ba-slide" aria-roledescription="slide" aria-label="1 of 4">
+      <img src="/img/B&A - Feedback 1.png" alt="Original Trash Panda app homepage before and after side by side">
+      <figcaption class="ba-caption" style="text-align:left;"><b>Open dates and booking status replace “Book now.”</b><br>Booked users were already checking email or simulating bookings to see availability, so the home screen now shows it.</figcaption>
+    </figure>
+    <figure class="ba-slide" aria-roledescription="slide" aria-label="2 of 4" hidden>
+      <img src="/img/B&A - Cancel booking.png" alt="Before and after of booking summary. Before: shows pickup date and details. After: shows pickup date, details, booking status with a Cancel booking button.">
+      <figcaption class="ba-caption" style="text-align:left;"><b>Cancel sits on the booking summary.</b><br>Easy to reach, and visible to Trash Panda. When it’s disabled, a written note says so, so the state isn’t left unexplained.</figcaption>
+    </figure>
+    <figure class="ba-slide" aria-roledescription="slide" aria-label="3 of 4" hidden>
+      <img src="/img/B&A - System feedback (1).png" alt="New popup confirmation of actions. Before: no confirmation.">
+      <figcaption class="ba-caption" style="text-align:left;"><b>Confirmation popups with a second confirmation and undo.</b><br>Users know the system received their request and can reverse a mistake.</figcaption>
+    </figure>
+    <figure class="ba-slide" aria-roledescription="slide" aria-label="4 of 4" hidden>
+      <img src="/img/B&A - New booking.png" alt="Before and after of booking steps. Before: shows steps 1, 2, 3 as numbers. After: shows a progress tracker with all steps displayed, what step they are currently in and whats done.">
+      <figcaption class="ba-caption" style="text-align:left;"><b>Progress tracker replaces step numbers.</b><br>Shows how many steps remain, where you are and what’s done.</figcaption>
+    </figure>
+
+    <div class="ba-controls">
+      <button type="button" id="ba-prev" aria-label="Previous image">Previous</button>
+      <span class="ba-count" id="ba-count" aria-live="polite">1 / 2</span>
+      <button type="button" id="ba-next" aria-label="Next image">Next</button>
     </div>
-    <ul class="why">
-      <li><b>Open dates and booking status replace “Book now.”</b><br>Booked users were already checking email or simulating bookings to see availability, so the home screen now shows it.</li>
-      <li><b>Cancel sits on the booking summary.</b><br>Easy to reach, and visible to Trash Panda. When it’s disabled, a written note says so, so the state isn’t left unexplained.</li>
-      <li><b>Confirmation popups with a second confirmation and undo.</b><br>Users know the system received their request and can reverse a mistake.</li>
-      <li><b>Progress tracker replaces step numbers.</b><br>Shows how many steps remain, where you are and what’s done.</li>
-    </ul>
   </div>
 </section>
 
@@ -263,6 +266,10 @@ blockquote{margin:0;background:var(--soft);border-radius:14px;padding:1.4rem;fon
     seg.forEach(function(x){x.setAttribute('aria-pressed',x===b)});
     [].forEach.call(document.querySelectorAll('[data-panel]'),function(p){p.hidden=p.dataset.panel!==b.dataset.v});
   })});
+  var slides=[].slice.call(document.querySelectorAll('.ba-slide')),currentSlide=0;
+  function showSlide(index){currentSlide=(index+slides.length)%slides.length;slides.forEach(function(slide,i){slide.hidden=i!==currentSlide});$('#ba-count').textContent=(currentSlide+1)+' / '+slides.length}
+  $('#ba-prev').addEventListener('click',function(){showSlide(currentSlide-1)});
+  $('#ba-next').addEventListener('click',function(){showSlide(currentSlide+1)});
   var d=$('#dlg'),t=$('#toast'),c=$('#chip'),cb=$('#cancel');
   cb.addEventListener('click',function(){d.showModal?d.showModal():d.setAttribute('open','')});
   $('#no').addEventListener('click',function(){d.close()});
