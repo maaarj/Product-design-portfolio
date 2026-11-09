@@ -26,14 +26,14 @@ h1,h2,h3{width:100%;font-family:var(--display);letter-spacing:-.02em;margin:0}
 h1{font-size:clamp(2.6rem,6vw,4.4rem);line-height:1}
 h2{font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1.12;margin-bottom:1rem}
 h3{font-size:1.15rem;line-height:1.3}
-section{padding-top:clamp(3.5rem,8vw,6rem)}
+section{padding-top:32px}
 .lede{color:var(--muted);margin:1rem 0 2rem}
 p{width:100%;margin:0 0 1rem}
 .prose{width:100%;max-width:none}
 .muted{color:var(--muted)}
 
 /* 1 hero */
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.5rem,5vw,4rem);align-items:center;padding-top:clamp(2rem,6vw,4rem)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.5rem,5vw,4rem);align-items:center;padding-top:32px}
 @media (max-width:860px){.hero{grid-template-columns:1fr}}
 .brief{margin:2rem 0 0;display:grid;gap:1.1rem}
 .brief dt{font:600 1rem var(--display);color:var(--accent)}
@@ -128,7 +128,7 @@ table{border-collapse:collapse;width:100%;font-size:1rem}th,td{text-align:left;p
 .mx{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.5rem}@media (max-width:700px){.mx{grid-template-columns:1fr}}
 .mx-image{grid-column:1/-1;min-height:280px;aspect-ratio:16/9;border:2px dashed var(--line);border-radius:14px;background:var(--soft);display:grid;place-items:center;color:var(--muted);font:600 1rem var(--body)}
 .mx .panel h3{font-size:1rem}.mx ul{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:.4rem}.mx li{background:var(--panel);border:1.5px solid var(--line);border-radius:8px;padding:.15rem .6rem;margin:0;font-size:.95rem}
-.mockup-slot{width:min(260px,70vw);aspect-ratio:9/16;border:4px solid #000;border-radius:30px 30px 0 0;display:grid;place-items:center;color:var(--muted);font:600 .95rem var(--body)}
+.mockup-slot{width:min(260px,70vw);height:460px;border:4px solid #000;border-radius:30px 30px 0 0;display:grid;place-items:end center;color:var(--muted);font:600 .95rem var(--body);overflow:hidden}
 .sw{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}.sw span{display:grid;place-items:center;width:110px;height:64px;border:1px solid #000;border-radius:10px;font:600 .85rem var(--body);color:#101820}
 .bar2{height:10px;background:#58CC02;margin:-1.4rem -1rem .8rem}.days{display:flex;gap:.25rem;justify-content:center;margin:.4rem 0 .8rem}.days span{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;border:1.5px solid #285C00;font-size:.65rem}.days .on{background:#58CC02;border-color:#58CC02}
 .crd{background:#E0EAE0;border-radius:8px;padding:.6rem;margin-bottom:.5rem}.pg{height:8px;border-radius:4px;background:#D5DADD;margin:.2rem 0 .8rem}.pg span{display:block;height:100%;border-radius:4px;background:#58CC02}
@@ -213,17 +213,17 @@ body:has(.lb[open]){overflow:hidden}
   <div class="cmp">
     <div class="stage">
       <div class="mockup-slot" data-panel="a" hidden>
-        <img class="flow-image" src="" alt="Grab green option mockup" loading="lazy" decoding="async">
+        <img class="flow-image" src="/img/grab green.png" alt="Grab green option mockup" loading="lazy" decoding="async">
       </div>
       <div class="mockup-slot" data-panel="b">
-        <img class="flow-image" src="" alt="Lawn Green option mockup" loading="lazy" decoding="async">
+        <img class="flow-image" src="/img/Code app homepage.png" alt="Lawn Green option mockup" loading="lazy" decoding="async">
       </div>
       <div class="mockup-slot" data-panel="c" hidden>
-        <img class="flow-image" src="" alt="Sololearn blue option mockup" loading="lazy" decoding="async">
+        <img class="flow-image" src="/img/solo learn.png" alt="Sololearn blue option mockup" loading="lazy" decoding="async">
       </div>
     </div>
     <div><ul class="why"><li><b>Decision: Lawn Green with Poppins, in a light theme.</b><br>A light green inspired by Duolingo, which suits a friendly, encouraging learning app.</li>
-    <li><b>Two prototype iterations before I built the UI.</b><br>The prototype was presented to and approved by our professor, who acted as client.</li></ul>
+    <li><b>Two UI design iterations before I built the UI.</b><br>The designs was presented to and approved by our professor, who acted as client.</li></ul>
     <div class="sw" role="img" aria-label="Lawn Green swatch, hex 58CC02"><span style="background:#58CC02">#58CC02</span><span style="background:#E0EAE0">White Green</span><span style="background:#666;color:#fff">Storm Dust</span></div>
     <table><thead><tr><th>Style</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Header One</td><td>24 px</td><td>Poppins Medium</td></tr><tr><td>Header Two</td><td>20 px</td><td>Poppins Medium</td></tr><tr><td>Body</td><td>16 px</td><td>Poppins Regular</td></tr><tr><td>Small</td><td>14 px</td><td>Poppins Light</td></tr></tbody></table></div>
   </div>
