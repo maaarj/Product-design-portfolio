@@ -38,7 +38,11 @@ p{width:100%;margin:0 0 1rem}
 .brief{margin:2rem 0 0;display:grid;gap:1.1rem}
 .brief dt{font:600 1rem var(--display);color:var(--accent)}
 .brief dd{margin:.1rem 0 0;max-width:56ch}
-.stage{background:var(--tint);border-radius:18px;padding:clamp(1.5rem,5vw,3rem) 1rem 0;display:grid;place-items:end center;overflow:hidden;min-height:440px}
+.stage{background:var(--tint);border-radius:18px;padding:clamp(1.5rem,5vw,3rem) 1rem 0;display:grid;place-items:end center;overflow:hidden;aspect-ratio:1}
+.stage-frame{place-self:center;width:50%;border:4px solid #000;border-radius:18px;overflow:hidden}
+.stage-frame img{display:block;width:100%;height:auto}
+.hero>.stage{width:min(100%,440px);height:auto;aspect-ratio:1;min-height:0;justify-self:end}
+.hero>.stage img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
 
 /* phone ui */
 .ph{width:min(260px,70vw);background:#fff;color:#101820;border:6px solid #101820;border-bottom:0;border-radius:30px 30px 0 0;padding:1.4rem 1rem 1.2rem;font:500 .8rem/1.35 var(--body)}
@@ -161,7 +165,7 @@ body:has(.lb[open]){overflow:hidden}
 <div><dt>My role</dt><dd>I ran the user research, shared the flowcharts, designed the wireframes with one UI designer, prototyped, and built the UI.</dd></div></dl></div>
 
 <div class="stage" role="img" aria-label="#Code app home screen image">
-  <!-- Insert the home screen image snippet here. -->
+  <div class="stage-frame"><img src="/img/Code app homepage.png" alt="Redesigned homepage with open dates and booked date with status, and a bottom nav bar to check fees and accepted recyclables list."></div>
 </div>
 </section>
 
