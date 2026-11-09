@@ -99,6 +99,10 @@ p{width:100%;margin:0 0 1rem}
 .ba-carousel{margin:1.5rem 0 2rem;background:var(--soft);border-radius:16px;padding:1rem}
 .ba-slide{display:grid;place-items:center;min-height:220px}
 .ba-slide img{display:block;max-width:100%;max-height:min(65vh,680px);width:auto;height:auto;object-fit:contain;border-radius:10px}
+img:not(#zoom-image){cursor:zoom-in}
+.zoom-dialog{width:min(96vw,1400px);max-width:96vw;max-height:96vh;padding:2.5rem 1rem 1rem;background:var(--panel);color:var(--ink)}
+.zoom-dialog img{display:block;max-width:100%;max-height:calc(96vh - 5rem);width:auto;height:auto;margin:auto;object-fit:contain}
+.zoom-close{position:absolute;top:.5rem;right:.5rem;min-width:44px;min-height:44px;border:1px solid var(--line);border-radius:99px;background:var(--panel);color:var(--ink);font:600 1rem var(--body);cursor:pointer}
 .ba-caption{margin:.75rem 0 0;text-align:center;color:var(--muted);font-weight:600}
 .ba-controls{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:.75rem}
 .ba-controls button{min-height:44px;padding:.45rem 1rem;border:1px solid var(--line);border-radius:99px;background:var(--panel);color:var(--ink);font:600 1rem var(--body);cursor:pointer}
@@ -151,20 +155,23 @@ blockquote{margin:0;background:var(--soft);border-radius:14px;padding:1.4rem;fon
 
 <section id="discovery" aria-labelledby="d">
   <h2 id="d">Customers left the app to finish simple tasks</h2>
-  <p class="lede">The app was easy to use, but missing answers pushed people to Facebook, the website or email that creates a lot more work for a small team.</p>
+  <p class="lede">The app was easy to use, but missing answers pushed people to Facebook, the website or email that creates a lot of work for a small team.</p>
   <div class="cols">
     <div class="panel"><h3>How I researched</h3>
-      <ul><li>Read comments on the company’s Facebook page for the big picture</li><li>Invited commenters to interviews and usability testing</li><li>Ran one usability round on the current app</li><li>Grouped findings into themes and ranked them by how often they came up</li></ul></div>
+      <ul><li>Read comments on the company’s Facebook page for the big picture</li><li>Invited commenters to interviews and usability testing</li><li>Ran one round of usability on the current and redesigned app</li><li>Grouped findings into themes and ranked them by how often they came up</li></ul></div>
+
     <div class="panel persona"><h3>Who it's for</h3> <!-- Rewrite this section-->
-      <p>A waste-conscious customer who books recyclable pick-ups and wants to know what to expect before she commits.</p>
+      <p>A waste-conscious customer who wants to books recyclable pick-ups and wants to know what to expect before she commits.</p>
     </div>
+
     <div class="panel"><h3>Design objectives</h3>
       <ul><li>Make key service information easy to find</li>
         <li>Keep the app simple</li>
-        <li>Give the business a systematic way to track cancellations</li></ul>
+        <li>Give the business a systematic way to track cancellations, or booking</li>
+        <li>Reduce frequently asked question in the Facebook and email channels</li></ul>
     </div>
   </div>
-  <!-- Add persona image -->
+
   <h3 style="margin-top:2.5rem">Pain points found</h3>
   <ul class="pains">
     <li>Unsure which items are accepted, people ask in Facebook comments.</li>
@@ -172,22 +179,16 @@ blockquote{margin:0;background:var(--soft);border-radius:14px;padding:1.4rem;fon
     <li>They want the base rate to compare with other services.</li>
     <li>Booked users check email or simulate a booking to work out fees.</li>
     <li>They expect a map showing the driver’s location.</li>
-    <li><b>They assume cancelling means messaging on Facebook. Fees aren’t paid upfront, so this also costs the business.</b></li>
+    <li>Cancelling happens through Facebook message or through email. <b>Missing this notification will still cost the business.</b></li>
   </ul>
 </section>
 
 <section id="flows" aria-labelledby="f">
   <h2 id="f">Cancelling became a path inside the app</h2>
-  <p class="lede">Low-fidelity flow of the new cancellation logic. Dashed boxes are existing screens, solid green boxes are new.</p>
-  <ol class="flow">
-    <li><b>Home</b><span>Open dates and booked date with status</span></li>
-    <li><b>Booking summary</b><span>Details and Cancel button</span></li>
-    <li class="alt"><b>Confirm popup</b><span>Asks before acting</span></li>
-    <li class="alt"><b>Second confirmation</b><span>Request received, with undo</span></li>
-    <li class="alt"><b>Status updated</b><span>Visible to Trash Panda</span></li>
-  </ol>
+  <p class="lede">Low-fidelity flow of the new cancellation logic. Dashed boxes are existing screens, solid blue boxes are new.</p>
+  <img src="cancel flow.png" alt="A new flow for cancelling bookings with dashed and solid blue boxes. Dashed boxes are existing screens, solid blue boxes are new.">
   <div class="tree"><div class="panel"><h3>Where information moved</h3>
-    <p>Secondary information left the kebab menu. A hamburger menu gives it dedicated screens, so the home screen stays focused on impact and schedule. A bottom nav bar gives direct access to the fee calculator and accepted recyclables, and the booking steps became a progress tracker.</p></div></div>
+    <p>Secondary information lives in the hamburger menu that gives it dedicated screens, so the home screen stays focused on impact and schedule. A bottom nav bar gives direct access to the key information: fee calculator and accepted recyclables.</p></div></div>
 </section>
 
 <section id="validation" aria-labelledby="v">
@@ -220,23 +221,9 @@ blockquote{margin:0;background:var(--soft);border-radius:14px;padding:1.4rem;fon
 </section>
 
 <section id="impact" aria-labelledby="i">
-  <h2 id="i">Try the cancel flow, then see what testers said</h2>
-  <div class="demo">
-    <div class="stage">
-      <div class="ph">
-        <h4>Booking summary</h4>
-        <div class="row"><span>Pickup</span><span>Sat, 9 AM</span></div>
-        <div class="row"><span>Status</span><span class="chip" id="chip">Confirmed</span></div>
-        <button class="btn ghost" id="cancel" type="button">Cancel booking</button>
-        <div class="toast" id="toast" role="status" hidden><span>Booking cancelled.</span><button type="button" id="undo">Undo</button></div>
-      </div>
-    </div>
-    <div>
-      <h3>Confirm, then undo</h3>
-      <p class="muted">Press Cancel to open the confirmation. After confirming, a status message appears with an Undo action, which restores the booking.</p>
-      <p class="muted">Also designed for later: a cashback Withdrawal screen modeled on GCash for familiarity, and a Coaching corner with its own screen in the hamburger menu.</p>
-    </div>
-  </div>
+  <h2 id="i">What the testers said</h2>
+  <p class="lede">One round of usability testing with the same tasks as the current version: Find out if they accept the specific recyclable, determine how much would the booking be, and cancel the booking</p>
+
   <div class="quotes">
     <blockquote>“This design is a huge improvement to the current app as it addresses the areas that the app could improve on.”</blockquote>
     <blockquote>“The design makes task simpler since its all available now.”</blockquote>
@@ -258,6 +245,11 @@ blockquote{margin:0;background:var(--soft);border-radius:14px;padding:1.4rem;fon
   <button class="btn ghost" id="no" type="button">Keep booking</button>
 </dialog>
 
+<dialog id="zoomdlg" class="zoom-dialog" aria-label="Expanded before and after image">
+  <button class="zoom-close" id="zoom-close" type="button" aria-label="Close enlarged image">Close</button>
+  <img id="zoom-image" alt="">
+</dialog>
+
 <script>
 (function(){
   var $=function(s){return document.querySelector(s)};
@@ -270,6 +262,15 @@ blockquote{margin:0;background:var(--soft);border-radius:14px;padding:1.4rem;fon
   function showSlide(index){currentSlide=(index+slides.length)%slides.length;slides.forEach(function(slide,i){slide.hidden=i!==currentSlide});$('#ba-count').textContent=(currentSlide+1)+' / '+slides.length}
   $('#ba-prev').addEventListener('click',function(){showSlide(currentSlide-1)});
   $('#ba-next').addEventListener('click',function(){showSlide(currentSlide+1)});
+  var zoomDialog=$('#zoomdlg'),zoomImage=$('#zoom-image');
+  document.querySelectorAll('img:not(#zoom-image)').forEach(function(image){
+    image.tabIndex=0;image.setAttribute('role','button');image.setAttribute('aria-label',image.alt+' (enlarge image)');
+    function openZoom(){zoomImage.src=image.src;zoomImage.alt=image.alt;zoomDialog.showModal?zoomDialog.showModal():zoomDialog.setAttribute('open','')}
+    image.onclick=openZoom;
+    image.addEventListener('keydown',function(event){if(event.key==='Enter'||event.key===' '){event.preventDefault();openZoom()}});
+  });
+  $('#zoom-close').addEventListener('click',function(){zoomDialog.close()});
+  zoomDialog.addEventListener('click',function(event){if(event.target===zoomDialog)zoomDialog.close()});
   var d=$('#dlg'),t=$('#toast'),c=$('#chip'),cb=$('#cancel');
   cb.addEventListener('click',function(){d.showModal?d.showModal():d.setAttribute('open','')});
   $('#no').addEventListener('click',function(){d.close()});
