@@ -26,6 +26,7 @@ html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
 a{color:inherit}
+img:not(.phone img):not(.win img):not(.stage-frame img):not(.image-slot img){border:1px solid #E3E5E4}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
 .skip{position:absolute;left:1rem;top:-4rem;background:var(--pill);color:var(--pill-ink);padding:.7rem 1rem;border-radius:8px;z-index:20}
 .skip:focus{top:1rem}
@@ -103,7 +104,7 @@ section+section{margin-top:clamp(3.5rem,8vw,6rem)}
 <div class="shell">
   <header class="side">
     <h1 class="name">Marjie Corona</h1>
-    <p class="role">Product designer for B2B and B2C SaaS</p>
+    <p class="role">Product designer for B2B SaaS</p>
     <p class="meta">I turn dense clinical, and energy data and campus workflows into screens people can use under pressure. Four years across healthcare, edtech and energy, 2022 to 2026.</p>
     <nav class="nav" aria-label="Primary">
       <a href="#work" aria-current="true">Work</a>
@@ -142,8 +143,11 @@ section+section{margin-top:clamp(3.5rem,8vw,6rem)}
     <section id="about" aria-labelledby="about-h">
       <h2 id="about-h">About</h2>
       <div class="prose">
-        <p>I’m a UI/UX designer who likes the unglamorous middle of a product: the review screens, the dashboards, the handoff notes. I start with the people doing the work, then shape the interface around what they told me.</p>
+        <p>I’m a product designer who likes the unglamorous parts: review screens, annual encounter notes update, design tokens. I’m happiest when a complicated workflow finally feels clear, wether that’s matching centralized and local lab ranges at Clincove or bringing patient tasks into the visit at Theoria Medical. I let research change my mind, and I try to be the teammate you can rely on.</p>
+
         <p>On teams I’ve led research, kept design systems healthy, written developer tickets and run manual QA, so what ships matches what I designed. I work closely with CEOs, PMs, engineers and sales to balance user, business and technical needs.</p>
+
+        <p>Offline, you’ll find me crocheting, taking pictures, reading, or writing in my journal after a podcast or an article that stuck with me, usually with my pet close by. When I do sit at my desk for fun, to socialize with friends online.</p>
       </div>
       <dl class="skills">
         <div><dt>Research</dt><dd>User interviews, usability testing, design thinking</dd></div>
@@ -159,7 +163,8 @@ section+section{margin-top:clamp(3.5rem,8vw,6rem)}
         <li>
           <time>Jan 2026 to Nov 2026</time>
           <div><h3>Product Designer</h3><p class="co">Clincove, Contract</p>
-          <p>Designed the scan-to-form flow for electronic data capture and a mobile clinical trial app covering data capture, trial master file and investigator site file. Maintained and scaled the design system with design tokens and updated components.</p></div>
+          <p>Designed electronic data capture flows, trial master file and investigator site file. Most recently worked out how centralized and local lab ranges could be matched, and how version control should be.Maintains and regularly updates the design system: Adding design tokens, updating, and archiving components.</p></div>
+          
         </li>
         <li>
           <time>Oct 2025 to May 2026</time>
@@ -168,12 +173,12 @@ section+section{margin-top:clamp(3.5rem,8vw,6rem)}
         </li>
         <li>
           <time>Jan 2025 to Oct 2025</time>
-          <div><h3>UI/UX Designer</h3><p class="co">SolX Technologies</p>
+          <div><h3>UI/UX Designer</h3><p class="co">SolX Technologies, Employed</p>
           <p>Led end-to-end design of a solar bidding platform, retail aggregation programs and sales route workflows. Ran user research, maintained the design system, wrote developer tickets and QA.</p></div>
         </li>
         <li>
           <time>Jul 2022 to Aug 2024</time>
-          <div><h3>UI/UX Designer</h3><p class="co">Theoria Medical</p>
+          <div><h3>UI/UX Designer</h3><p class="co">Theoria Medical, Employed</p>
           <p>Led design of electronic health record applications: dashboards, medical charts and workflows, and compliance updates. Turned research into interfaces and improved design-to-development handoff through documentation.</p></div>
         </li>
       </ol>
